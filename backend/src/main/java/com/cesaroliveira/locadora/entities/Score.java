@@ -1,9 +1,16 @@
 package com.cesaroliveira.locadora.entities;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name= "tb_score")
 public class Score {
 	
-	private Long score;
-	private ScorePk id;
+	@EmbeddedId
+	private ScorePk id = new ScorePk(); //Instanciação de um id que representa o usuário e o filme que será avaliado, para garantir.
+	private Double value;
 	
 	public Score() {
 	}
@@ -16,12 +23,12 @@ public class Score {
 		id.setUser(user);
 	}
 
-	public Long getScore() {
-		return score;
+	public Double getValue() {
+		return value;
 	}
 
-	public void setScore(Long score) {
-		this.score = score;
+	public void setValue(Double value) {
+		this.value = value;
 	}
 
 	public ScorePk getId() {
